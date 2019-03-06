@@ -1,4 +1,4 @@
-const React, { Component } = require('react')
+import React, { Component } from 'react'
 
 class App extends Component {
 
