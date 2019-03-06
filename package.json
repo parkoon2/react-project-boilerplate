@@ -4,7 +4,9 @@
   "description": "React Project Boilerplate for study",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open",
+    "pack": "webpack --mode development --config webpack.config.js",
+    "pack-p": "webpack --mode production --config webpack.config.js"
   },
   "repository": {
     "type": "git",

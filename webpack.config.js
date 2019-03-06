@@ -1,34 +1,39 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
-    entry: './src/index.js',
+module.exports = (env, argv) => {
 
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'index.bundle.js'
-    },
+    const mode = argv.mode
 
-    module: {
-        rules: [
-            {
-                test: /\.(js)$/,
-                use: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader', 'css-loader'
-                ]
-            }
+    return ({
+        entry: './src/index.js',
+
+        output: {
+            path: path.join(__dirname, 'dist'),
+            filename: 'index.bundle.js'
+        },
+
+        module: {
+            rules: [
+                {
+                    test: /\.(js)$/,
+                    use: 'babel-loader'
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        'style-loader', 'css-loader'
+                    ]
+                }
+            ]
+        },
+
+        mode,
+
+        plugins: [
+            new htmlWebpackPlugin({
+                template: './src/public/index.html'
+            })
         ]
-    },
-
-    mode: 'development',
-
-    plugins: [
-        new htmlWebpackPlugin({
-            template: './src/public/index.html'
-        })
-    ]
+    })
 }
